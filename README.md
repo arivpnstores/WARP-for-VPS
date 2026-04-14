@@ -33,7 +33,12 @@ Pastikan semua panel / service sudah terinstall sebelum memasang WARP.
 * Bisa menyebabkan service error / tidak jalan
 
 ---
-
+## 📶 Fix ipv4 only (Fix Error)
+```bash
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+sysctl -p
+```
 ## 🧰 Persiapan (Fix DNS)
 
 Jalankan perintah berikut sebelum install:
