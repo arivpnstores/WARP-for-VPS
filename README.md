@@ -1,89 +1,204 @@
-# وارپ برای سرور
-رهنمای نصب IP وارپ روی سرور مجازی
+# 🚀 WARP for VPS Server
 
-# نکته
-اول از همه، هر پنلی/سرویس ای که میخواهید روی سرور نصب کنید، و نصب و راه اندازیش رو انجام بدید
+<p align="center">
+  <img src="https://img.shields.io/badge/WARP-Cloudflare-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Stable-brightgreen?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Script-fscarmen-blue?style=for-the-badge">
+</p>
 
-چون IP سرور با این روش عوض میشه و اکثر پنل ها/سرویس ها به جای IP سرور توی کانفیگ هاتون، میان IP وارپ رو قرار میدن و برای همین دیگه کانفیگتون کار نمیکنه.
+Panduan lengkap instalasi dan optimasi **Cloudflare WARP** pada VPS agar mendapatkan IP yang stabil dan kompatibel dengan berbagai layanan seperti ChatGPT, Netflix, dan lainnya.
 
-# پیش نیاز
+---
 
-این اسکریپت یکی از اسکریپت های نصب وارپ هست و خوبیش اینه که رابط کاربری انگلیسی هم داره، فقط معمولا میزنه نتورک سرور رو خراب میکنه که با تغییر و قفل فایل `resolve.conf` خیلی این مشکل کمتر میشه!
+## 📌 Fitur
 
-مهم! اجرای این کامند قبل از اجرای اسکریپت وارپ! {کامند زیر یک بار فایل `resolv.conf` رو پاک میکنه ( تا اگر لینک شده به جایی، این لینک از بین بره) ، مجدد فایل رو با DNS کلادفلر میسازه و این فایل رو قفل میکنه}
+* 🌍 Mengubah IP server menggunakan Cloudflare WARP
+* ⚡ Mendukung akun Gratis & WARP+
+* 🔒 Fix DNS agar tidak merusak network
+* 🎯 Bisa mendapatkan IP clean (anti detect bot)
+* 🛠 Menu interaktif & mudah digunakan
+
+---
+
+## ⚠️ Penting Sebelum Install
+
+> **WAJIB dibaca!**
+
+Pastikan semua panel / service sudah terinstall sebelum memasang WARP.
+
+**Alasan:**
+
+* Setelah WARP aktif, IP server akan berubah
+* Config panel akan mengikuti IP WARP
+* Bisa menyebabkan service error / tidak jalan
+
+---
+
+## 🧰 Persiapan (Fix DNS)
+
+Jalankan perintah berikut sebelum install:
 
 ```bash
 sudo rm /etc/resolv.conf && echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf && chattr +iu /etc/resolv.conf
 ```
-# اجرای اسکریپت نصب سرویس وارپ
 
-1. اسکریپت نصب وارپ رو اجرا کنید، [منبع اسکریپت برای اطلاعات بیشتر](https://gitlab.com/fscarmen/warp)
+### Fungsi:
+
+* Menghapus `resolv.conf` lama (hindari error symlink)
+* Mengatur DNS ke Cloudflare (1.1.1.1)
+* Mengunci file agar tidak berubah otomatis
+
+---
+
+## 🚀 Instalasi WARP
+
+### 1. Jalankan Installer
+
 ```bash
 wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh d
 ```
-2.  زبان رو مبپرسه کافیه عدد `1` رو تایپ کنید و اینتر رو بزنید
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/06b61d02-183c-4e4b-9941-329e112c92e0)
+---
 
+### 2. Ikuti Pilihan Menu
 
-3. مرحله بعدی هم `1` رو بزنید (با روش warp-go لایسنس به خوبی فعال نمیشه)
+| Langkah        | Pilihan                    |
+| -------------- | -------------------------- |
+| Pilih Bahasa   | `1` (English)              |
+| Metode Install | `1`                        |
+| Mode WARP      | `1` (Full WARP)            |
+| Jenis Akun     | `1` (Gratis) / `2` (WARP+) |
+| IPv6 Mode      | `3`                        |
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/12501955-b1a2-4579-86f1-6bf7628c4d76)
+---
 
-4.  مرحله بعدی هم `1` رو بزنید تا کل سرور رو از وارپ رد کنه
- 
- ![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/120f12e3-bbdd-4698-878e-b98ea72ad961)
+## 🔑 WARP+ License (Opsional)
 
-5. مرحله بعدی اگر لایسنس وارپ+ دارید میتونید عدد `2` و برای اکانت رایگان عدد `1` رو بزنید، [دریافت لایسنس](https://t.me/generatewarpplusbot)
+Jika ingin performa lebih bagus, gunakan WARP+:
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/7bd0372e-7433-4026-a91f-0fb61d60cdb3)
+👉 [https://t.me/generatewarpplusbot](https://t.me/generatewarpplusbot)
 
-6. برای اکانت وارپ+ اول لایسنس رو قرار بدید و اسم این دستگاه رو مشخص کنید که کاملا انتخابی هست نمونه:
+Masukkan:
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/fce130d6-83ce-4c45-9ef6-ca08c0837b85)
+* License Key
+* Nama Device (bebas)
 
-7. مرحله بعد گزینه `3` رو بزنید (حتی اگر سرور IPv6 نداره زدن این گزینه مشکلی ایجاد نمیکنه)
+---
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/13c40eb7-4686-447f-bc3c-9897d9e8beee)
+## 🧪 Verifikasi
 
-8. اگر همه چیز خوب پیش بره و این پیام رو دریافت کنید یعنی نصب درست انجام شده
+Cek apakah WARP sudah aktif:
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/c40f0ec2-68f9-4191-a937-ae00c1d8dc0c)
+```bash
+warp h
+```
 
-بعد از نصب هم از دستورات زیر میتونید استفاده کنید، برای دیدن راهنما `warp h` را تایپ کنید
+---
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/5a57f065-4db3-45e4-b00b-147a20122b3b)
+## 🌍 Mendapatkan IP WARP Berkualitas
 
-# دریافت IP وارپ
+IP default biasanya kurang bagus (terdeteksi bot).
+Gunakan cara berikut untuk mendapatkan IP yang lebih clean:
 
-خود اسکریپت IP میگیره براتون ولی IPش بدرد نمیخوره و معمولا IP مشکوک به بات بودن هست، برای تغییر IP وارپ و دریافت IP درست حسابی که یک IP سازگار با ChatGPT و Netflix و ... باشه، مراحل زیر رو انجام بدید:
-
-1. کامند زیر رو اجرا کنید
 ```bash
 warp i
 ```
-2. مرحله بعدی گزینه `1` رو انتخاب کنید
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/bf5d8501-83fa-44fb-ab9f-7249dd3a9405)
+Lalu pilih:
 
-خیلی مهم! اگر مشکل نتورکی پیش نیامده باشه باید خود اسکریپت آدرس سرور رو درست تشخیص بده، نمونه سرور من آلمان هست و بدرستی حرف de که مخفف deutchland هست نوشته شده و کافیه بدون اینکه چیزی تایپ کنم دکمه اینتر رو بزنم
+```
+1
+```
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/2f64c761-d733-47a4-a82e-6a5262aabf1e)
+---
 
-# عیب یابی
-اگر مشکل نتورکی باشه و به اشتباه `US` نوشته شد ادامه ندید! با دکمه های `ctrl+c` بیاین بیرون و از اول مرحله `warp i` رو انجام بدید!
+### ⚠️ PENTING
 
-نمونه اشتباه که اگر آدرس سرور رو بنویسید ویا اینتر رو بزنید به احتمال زیاد IP براتون نمیگیره:
+Jika lokasi server muncul otomatis (contoh: `sg`, `de`, dll):
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/5b99bef2-8a3f-472a-b755-aa7cc5fe536e)
+✅ Langsung tekan **ENTER**
+❌ Jangan ketik manual
 
+---
 
-چند بار بدین صورت امتحان کنید: `ctrl+c` رو بزنید و مجدد `warp i` رو بزنید و مجدد تلاش کنید تا خود اسکریپت آدرس سرور رو بدرستی تشخیص بده و بدون تایپ اینتر رو بزنید
+## 🛠 Troubleshooting
 
-هر زمان چنین خروجی ای گرفتید یعنی بدرستی وارپ نصب شده و هرزمان هم مشکلی داشتید کافیه از مرحله `warp i` به بعد برای دریافت IP جدید تلاش کنید.
+### ❌ Lokasi salah (misal jadi US)
 
-![image](https://github.com/amin2plus/warp-for-VPS/assets/31206022/555e40eb-5629-4d1b-99a0-222be498b4ee)
+Jangan lanjut! Lakukan ini:
 
-برای خروج از این حالت کافیه دکمه `ctrl+c` رو بزنید
+```bash
+CTRL + C
+warp i
+```
 
-برای خاموش کردن موقت از `warp o` و برای پاک کردن کامل از `warp u` استفاده کنید.
+Ulangi sampai lokasi benar.
+
+---
+
+### ❌ Tidak dapat IP bagus
+
+* Jalankan ulang `warp i`
+* Ulangi beberapa kali sampai dapat IP clean
+
+---
+
+## 🔄 Command Penting
+
+| Fungsi        | Command    |
+| ------------- | ---------- |
+| Bantuan       | `warp h`   |
+| Ganti IP      | `warp i`   |
+| OFF sementara | `warp o`   |
+| Hapus WARP    | `warp u`   |
+| Keluar        | `CTRL + C` |
+
+---
+
+## 📊 Tips Optimal
+
+* Gunakan WARP+ untuk IP lebih stabil
+* Jangan install WARP sebelum panel
+* Gunakan DNS lock untuk hindari error network
+* Ulangi generate IP sampai dapat yang bagus
+
+---
+
+## ✅ Hasil Akhir
+
+Jika semua langkah dilakukan dengan benar:
+
+* ✔ IP bersih & stabil
+* ✔ Support ChatGPT
+* ✔ Support Netflix
+* ✔ Tidak terdeteksi sebagai bot
+
+---
+
+## 📎 Credit
+
+* Script by: [https://gitlab.com/fscarmen/warp](https://gitlab.com/fscarmen/warp)
+
+---
+
+## ⭐ Support
+
+Jika repo ini membantu:
+
+* ⭐ Star repo ini
+* 🔁 Share ke teman
+* 💬 Gunakan dengan bijak
+
+---
+
+<p align="center">
+  Made with ❤️ for VPS Users
+</p>
+
+---
+
+Kalau mau next level, bilang aja — gue bisa:
+
+* bikin **README auto copy button**
+* tambah **preview hasil IP (curl test)**
+* atau bikin **script auto install 1 klik** 🔥
