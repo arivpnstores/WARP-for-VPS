@@ -35,6 +35,9 @@ Pastikan semua panel / service sudah terinstall sebelum memasang WARP.
 ---
 ## 📶 Fix ipv4 only (Fix Error)
 ```bash
+rm -f /etc/resolv.conf
+echo "nameserver 1.1.1.1" > /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 sysctl -p
@@ -44,7 +47,7 @@ sysctl -p
 Jalankan perintah berikut sebelum install:
 
 ```bash
-chattr -i /etc/resolv.conf && sudo rm /etc/resolv.conf && echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf && chattr +iu /etc/resolv.conf
+bash <(curl -sSL https://raw.githubusercontent.com/arivpnstores/costum/main/set-ipv4-dns.sh)
 ```
 
 ### Fungsi:
