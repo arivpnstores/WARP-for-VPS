@@ -35,6 +35,8 @@ Pastikan semua panel / service sudah terinstall sebelum memasang WARP.
 ---
 ## 📶 Fix ipv4 only (Fix Error)
 ```bash
+chattr -i -u /etc/resolv.conf
+chattr -i -u /etc/sysctl.conf
 rm -f /etc/resolv.conf
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
