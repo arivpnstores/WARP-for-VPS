@@ -33,24 +33,20 @@ Pastikan semua panel / service sudah terinstall sebelum memasang WARP.
 * Bisa menyebabkan service error / tidak jalan
 
 ---
-## 📶 Fix ipv4 only (Fix Error)
+
+## 🧰 Persiapan (Fix DNS)
+
+Jalankan perintah berikut sebelum install:
+
 ```bash
 chattr -i -u /etc/resolv.conf
 chattr -i -u /etc/sysctl.conf
 rm -f /etc/resolv.conf
 sed -i '/disable_ipv6/d' /etc/sysctl.conf
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 sysctl -p
-```
-## 🧰 Persiapan (Fix DNS)
-
-Jalankan perintah berikut sebelum install:
-
-```bash
-bash <(curl -sSL https://raw.githubusercontent.com/arivpnstores/costum/main/set-ipv4-dns.sh)
 ```
 
 ### Fungsi:
@@ -66,6 +62,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/arivpnstores/costum/main/set-
 ### 1. Jalankan Installer
 
 ```bash
+sudo rm /etc/resolv.conf && echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf && chattr +iu /etc/resolv.conf
 wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh d
 ```
 
