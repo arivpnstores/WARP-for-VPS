@@ -39,7 +39,7 @@ Pastikan semua panel / service sudah terinstall sebelum memasang WARP.
 Jalankan perintah berikut sebelum install:
 
 ```bash
-sudo rm /etc/resolv.conf && echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf && chattr +iu /etc/resolv.conf
+chattr -i /etc/resolv.conf && sudo rm /etc/resolv.conf && echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf && chattr +iu /etc/resolv.conf
 ```
 
 ### Fungsi:
